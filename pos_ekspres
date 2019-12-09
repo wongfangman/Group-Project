@@ -1,0 +1,156 @@
+import java.util.Scanner;
+
+public class GroupProject{
+   public static void main(String[]args){
+      Scanner sc = new Scanner(System.in);
+      String[] type=new String[20] ;
+      String size[]=new String[20];
+      int weight[]=new int[20];
+      int i;
+      int thickness[]=new int[20];
+      double[] price=new double[20];
+      int quantity[]=new int[20];
+      double totalPrice[]=new double[20];
+      double total=0;
+      char ans;
+      int num;
+        
+      System.out.printf("%nPos Express%n");
+      System.out.println("--------------------------------------------");      
+      System.out.println("");  
+         
+         //if(type.equals(LG))
+        // System.out.print("Please enter the quantity for this type");
+      do
+      {
+         System.out.print("Enter the number that want to pos:");
+         num=sc.nextInt();   
+      
+         for(i=0;i<num;i++)
+         {
+         
+            System.out.print("Type(LG/LE/LD/LK) :");
+            type[i]=sc.next();
+            type[i]=type[i].toUpperCase();
+            while(!type[i].equals("LG")&&!type[i].equals("LE")&&!type[i].equals("LD")&&!type[i].equals("LK"))
+            {
+               System.out.println("Enter again.");
+               System.out.print("Type(LG/LE/LD/LK) :");
+               type[i]=sc.next();
+               type[i]=type[i].toUpperCase();
+            }
+         
+            switch (type[i]){
+            
+               case "LG":
+                  type[i]="LG";
+                  size[i]="220mmx110mm";
+                  weight[i]=100;
+                  thickness[i]=3;
+                  price[i]=3.18;
+                  System.out.print("Please enter the quantity for this type: ");
+                  quantity[i]=sc.nextInt();
+                  totalPrice[i]=price[i]*quantity[i];
+                  break;
+            
+               case "LE":
+                  type[i]="LE(C5)";
+                  size[i]="229mmx162mm";
+                  weight[i]=250;
+                  thickness[i]=5;
+                  price[i]=3.71;
+                  System.out.print("Please enter the quantity for this type: ");
+                  quantity[i]=sc.nextInt();
+                  totalPrice[i]=price[i]*quantity[i];
+                  break;  
+            
+               case "LD":
+                  type[i]="LD(B4)";
+                  size[i]="353mmx250mm";
+                  weight[i]=500;
+                  thickness[i]=10;
+                  price[i]=4.77;
+                  System.out.print("Please enter the quantity for this type: ");
+                  quantity[i]=sc.nextInt();
+                  totalPrice[i]=price[i]*quantity[i];
+                  break; 
+            
+               case "LK":
+                  type[i]="LK";
+                  size[i]="340mmx250mm";
+                  weight[i]=1000;
+                  thickness[i]=25;
+                  price[i]=7.42;
+                  System.out.print("Please enter the quantity for this type: ");
+                  quantity[i]=sc.nextInt();
+                  totalPrice[i]=price[i]*quantity[i];
+               
+                  break; 
+            
+               default:
+                  type[i]="NOT HAVE THIS TYPE.";
+                  break;} 
+         
+            total+=totalPrice[i];
+         }// end for
+      
+         System.out.print("Do you want to continue(Y/N)?");
+         ans=sc.next().charAt(0);
+         ans=Character.toLowerCase(ans);
+      
+      }while(ans=='y');        
+         
+      System.out.printf("%n%n```%n");
+      System.out.println("Pos Express");
+      System.out.printf("```%n%n");
+      System.out.printf("%-15s%-15s%-15s%-20s%-15s%-15s%-15s","TYPE ","SIZE ","WEIGHT(GM) ","THICKNESS (MAX)","UNIT PRICE(RM)","Quantity","AMOUNT");
+      System.out.printf("%n---------------------------------------------------------------------------------------------------------------%n");  
+      for(i=0;i<type.length;i++)
+      {
+         if(type[i]!=null)
+         {
+            System.out.printf("%-15s%-15s%-15d%-20d%-15.2f%-15d%-15.2f",type[i],size[i],weight[i],thickness[i],price[i],quantity[i],totalPrice[i]);
+            System.out.println();
+         }
+      }
+      System.out.printf("%n%n%95s%-1.2f","TOTAL DUE: ",total);  
+      
+   
+    /*public static item(){
+        if(type.equals("LG")){
+        size="220mmx110mm";
+        weight="100gm";
+        thickness="3mm";
+        }else if(type.equals("LE(C5)")){
+        size="229mmx162mm";
+        weight="250gm";
+        thickness="5mm";
+        }else if(type.equals("LD(B4)")){
+        size="353mmx250mm";
+        weight="500gm";
+        thickness="10mm";
+        }else if(type.equals("LK")){
+        size="340mmx250mm";
+        weight="1000gm";
+        thickness="25mm";
+        }
+        System.out.print("Size: "+ size);
+        }
+        
+   
+        
+        sc.close();
+   
+    }
+    public static double CalculatePrice(){
+        double c = a * b;
+        return c;*/
+   }
+
+
+  
+           
+         
+
+
+}
