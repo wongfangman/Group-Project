@@ -1,156 +1,152 @@
 import java.util.Scanner;
-
-public class GroupProject{
-   public static void main(String[]args){
-      Scanner sc = new Scanner(System.in);
-      String[] type=new String[20] ;
-      String size[]=new String[20];
-      int weight[]=new int[20];
-      int i;
-      int thickness[]=new int[20];
-      double[] price=new double[20];
-      int quantity[]=new int[20];
-      double totalPrice[]=new double[20];
+public class Fangman
+{
+static Scanner scan = new Scanner(System.in);
+   public static void main(String args[])
+   {
+      //String type[][0]=new String[100] ;
+      //String size[][1]=new String[100];
+      String [][] arr =  new String[100][2];
+      //int weight[][0]=new int[100];
+      //int thickness[][1]=new int[100];
+      //int quantity[][2]=new int[100];
+      //int number[][3]=new int[100]
+      int [][]arr2 = new int [100][4];
+      //double price[0]=new double[100];
+      //double totalPrice[1]=new double[100];
+      double [][]arr3 =new double[100][2];
       double total=0;
-      char ans;
-      int num;
-        
-      System.out.printf("%nPos Express%n");
-      System.out.println("--------------------------------------------");      
-      System.out.println("");  
-         
-         //if(type.equals(LG))
-        // System.out.print("Please enter the quantity for this type");
-      do
-      {
-         System.out.print("Enter the number that want to pos:");
-         num=sc.nextInt();   
+      int row=0;
+      int choice;
+      int count=0;
+      int num=1;
+     
+      do{
+      menu();
+      System.out.print("Your choice: "); 
+      choice=scan.nextInt();
+      System.out.println("");
+      if (choice==0){
+      System.out.println("Thank you and Bye."); 
+      break;
+      }
+      else
+      count=processChoice(arr,arr2,arr3,total,row,choice, count, num);
+      } while (choice!=0);
+      }//end main
       
-         for(i=0;i<num;i++)
-         {
-         
-            System.out.print("Type(LG/LE/LD/LK) :");
-            type[i]=sc.next();
-            type[i]=type[i].toUpperCase();
-            while(!type[i].equals("LG")&&!type[i].equals("LE")&&!type[i].equals("LD")&&!type[i].equals("LK"))
+      static void menu(){
+      System.out.println(":::::::: MENU :::::::::\n"
+                         +"1. Add Item\n"
+                         +"2. Display\n"
+                         +"0. EXIT");
+                         }//menu
+                         
+      static int processChoice(String [][] arr,int [][] arr2, double [][]arr3,double total, int row,int choice, int count, int num){
+      switch(choice){
+      case 1: count=addItem(arr,arr2,arr3,row,count,num); break;
+      case 2: display(arr,arr2,arr3,total,row,count); break;
+      default: System.out.println("Sorry your choice is not in the list. Please choose again.");
+      }//switch
+      return count;
+      }//processChoice
+      
+      static int addItem(String [][] arr,int [][] arr2,double [][]arr3, int row,int count,int num){
+      if (count < arr.length){
+      System.out.print("Please enter the number that want to pos:");
+      int number_of_row = scan.nextInt();
+      System.out.println("");
+      
+      for (row = 0 ; row < number_of_row ; row++)
+      {
+      System.out.println("Pos " + (count+1) + ": ");
+      arr2[count][3] = count+1;
+      System.out.print("Please enter the type of pos(LG/LE/LD/LK) :");
+            arr[count][0] = scan.next() + scan.nextLine();
+            arr[count][0]=arr[count][0].toUpperCase();
+            while(!arr[count][0].equals("LG")&&!arr[count][0].equals("LE")&&!arr[count][0].equals("LD")&&!arr[count][0].equals("LK"))
             {
-               System.out.println("Enter again.");
+               System.out.println("Please enter the correct type.");
                System.out.print("Type(LG/LE/LD/LK) :");
-               type[i]=sc.next();
-               type[i]=type[i].toUpperCase();
+               arr[count][0]=scan.next();
+               arr[count][0]=arr[count][0].toUpperCase();
             }
          
-            switch (type[i]){
-            
+            switch (arr[count][0]){            
                case "LG":
-                  type[i]="LG";
-                  size[i]="220mmx110mm";
-                  weight[i]=100;
-                  thickness[i]=3;
-                  price[i]=3.18;
+                  arr[count][0]="LG";
+                  arr[count][1]="220mmx110mm";
+                  arr2[count][0] =100;
+                  arr2[count][1] =3;
+                  arr3[count][0]=3.18;
                   System.out.print("Please enter the quantity for this type: ");
-                  quantity[i]=sc.nextInt();
-                  totalPrice[i]=price[i]*quantity[i];
+                  arr2[count][2] =scan.nextInt();
+                  arr3[count][1]=arr3 [count][0]*arr2 [count][2] ;
                   break;
             
                case "LE":
-                  type[i]="LE(C5)";
-                  size[i]="229mmx162mm";
-                  weight[i]=250;
-                  thickness[i]=5;
-                  price[i]=3.71;
+                  arr[count][0]="LE(C5)";
+                  arr[count][1]="229mmx162mm";
+                  arr2[count][0] =250;
+                  arr2[count][1] =5;
+                  arr3[count][0]=3.71;
                   System.out.print("Please enter the quantity for this type: ");
-                  quantity[i]=sc.nextInt();
-                  totalPrice[i]=price[i]*quantity[i];
+                  arr2[count][2] =scan.nextInt();
+                  arr3[count][1]=arr3 [count][0]*arr2 [count][2] ;
                   break;  
             
                case "LD":
-                  type[i]="LD(B4)";
-                  size[i]="353mmx250mm";
-                  weight[i]=500;
-                  thickness[i]=10;
-                  price[i]=4.77;
+                  arr[count][0]="LD(B4)";
+                  arr[count][1]="353mmx250mm";
+                  arr2[count][0] =500;
+                  arr2[count][1] =10;
+                  arr3[count][0]=4.77;
                   System.out.print("Please enter the quantity for this type: ");
-                  quantity[i]=sc.nextInt();
-                  totalPrice[i]=price[i]*quantity[i];
+                  arr2 [count][2] =scan.nextInt();
+                  arr3[count][1]=arr3[count][0]*arr2 [count][2] ;
                   break; 
-            
+                              
                case "LK":
-                  type[i]="LK";
-                  size[i]="340mmx250mm";
-                  weight[i]=1000;
-                  thickness[i]=25;
-                  price[i]=7.42;
+                  arr[count][0]="LK";
+                  arr[count][1]="340mmx250mm";
+                  arr2[count][0] =1000;
+                  arr2[count][1] =25;
+                  arr3[count][0]=7.42;
                   System.out.print("Please enter the quantity for this type: ");
-                  quantity[i]=sc.nextInt();
-                  totalPrice[i]=price[i]*quantity[i];
-               
+                  arr2[count][2]=scan.nextInt();
+                  arr3[count][1]= arr3[count][0]*arr2[count][2] ;  
                   break; 
-            
-               default:
-                  type[i]="NOT HAVE THIS TYPE.";
-                  break;} 
-         
-            total+=totalPrice[i];
+                  }    
+         System.out.println();
+         count++;
          }// end for
+         }    
+      else
+          System.out.println("List is FULL.");
+      return count;
+   }//addItem
       
-         System.out.print("Do you want to continue(Y/N)?");
-         ans=sc.next().charAt(0);
-         ans=Character.toLowerCase(ans);
-      
-      }while(ans=='y');        
-         
-      System.out.printf("%n%n```%n");
-      System.out.println("Pos Express");
-      System.out.printf("```%n%n");
-      System.out.printf("%-15s%-15s%-15s%-20s%-15s%-15s%-15s","TYPE ","SIZE ","WEIGHT(GM) ","THICKNESS (MAX)","UNIT PRICE(RM)","Quantity","AMOUNT");
-      System.out.printf("%n---------------------------------------------------------------------------------------------------------------%n");  
-      for(i=0;i<type.length;i++)
+   static void display(String [][] arr,int [][] arr2, double [][]arr3,double total, int row,int count){
+     if (count==0)
+     System.out.println("Sorry list is empty.\n");
+     else
+     System.out.printf("%n%n```````````````%n");
+     System.out.println("Pos Express");
+     System.out.printf("```````````````%n%n");
+     System.out.printf("%-15s%-15s%-15s%-15s%-20s%-15s%-15s%-15s","NO","TYPE ","SIZE ","WEIGHT(GM) ","THICKNESS (MAX)","UNIT PRICE(RM)","Quantity","AMOUNT");
+     System.out.printf("%n------------------------------------------------------------------------------------------------------------------------%n");  
+      for (row = 0 ; row < count ; row++)
       {
-         if(type[i]!=null)
-         {
-            System.out.printf("%-15s%-15s%-15d%-20d%-15.2f%-15d%-15.2f",type[i],size[i],weight[i],thickness[i],price[i],quantity[i],totalPrice[i]);
-            System.out.println();
-         }
+      System.out.printf("%-15d%-15s%-15s%-15d%-20d%-15.2f%-15d%-15.2f%n",arr2[row][3],arr[row][0],arr [row][1],arr2 [row][0] ,arr2 [row][1] ,arr3 [row][0],arr2 [row][2] ,arr3 [row][1]);
+      total+=arr3[row][1]; 
       }
-      System.out.printf("%n%n%95s%-1.2f","TOTAL DUE: ",total);  
+      System.out.println("");
+      System.out.printf("%n%n%110s%-1.2f%n","TOTAL DUE: ",total); 
+      }//end display
+}//endclass
+
+
       
-   
-    /*public static item(){
-        if(type.equals("LG")){
-        size="220mmx110mm";
-        weight="100gm";
-        thickness="3mm";
-        }else if(type.equals("LE(C5)")){
-        size="229mmx162mm";
-        weight="250gm";
-        thickness="5mm";
-        }else if(type.equals("LD(B4)")){
-        size="353mmx250mm";
-        weight="500gm";
-        thickness="10mm";
-        }else if(type.equals("LK")){
-        size="340mmx250mm";
-        weight="1000gm";
-        thickness="25mm";
-        }
-        System.out.print("Size: "+ size);
-        }
-        
-   
-        
-        sc.close();
-   
-    }
-    public static double CalculatePrice(){
-        double c = a * b;
-        return c;*/
-   }
 
 
-  
-           
-         
-
-
-}
+      
