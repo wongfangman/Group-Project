@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Fangman
+public class PosEkspres
 {
 static Scanner scan = new Scanner(System.in);
    public static void main(String args[])
